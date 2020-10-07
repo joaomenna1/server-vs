@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('US_USERS')
 class User {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn()
   US_ID: string;
 }
 
