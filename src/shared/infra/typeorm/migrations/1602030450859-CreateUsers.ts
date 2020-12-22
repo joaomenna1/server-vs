@@ -13,10 +13,6 @@ export default class CreateUsers1602030450859 implements MigrationInterface {
             generationStrategy: 'increment',
           },
           {
-            name: 'POS_ID',
-            type: 'int',
-          },
-          {
             name: 'US_NAME',
             type: 'varchar',
           },
@@ -28,6 +24,10 @@ export default class CreateUsers1602030450859 implements MigrationInterface {
           {
             name: 'US_PASSWORD',
             type: 'varchar',
+          },
+          {
+            name: 'POS_ID',
+            type: 'int',
           },
           {
             name: 'created_at',

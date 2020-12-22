@@ -4,10 +4,14 @@
   "port": "5432",
   "username": "postgres",
   "password": "123456",
-  "database": "db_master",
-  "entities": ["./src/modules/**/infra/typeorm/entities/*.ts"],
-  "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
-  "cli": {
-    "migrationsDir": "./src/shared/infra/typeorm/migrations"
-  }
+  "database": "db_virtual",
+  "entities":[
+    "./src/modules/**/infra/typeorm/entities/*.ts"
+],
+"migrations":[
+    "./src/shared/infra/typeorm/migrations/*.ts"
+],
+"cli": {
+    "migrationsDir": "./src/shared/infra/typeorm/migrations/*.ts"
+}
 }

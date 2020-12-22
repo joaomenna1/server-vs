@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import AppError from '../../../shared/errors/AppError';
+import AppError from '@shared/errors/AppError';
 import User from '../infra/typeorm/entities/User';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IHashProvider from '../providers/hashProvider/models/IHashProvider';
@@ -12,13 +12,20 @@ interface IRequest {
 }
 @injectable()
 class CreateUserServices {
+  private usersRepository: IUsersRepository;
+
+  private hashProvider: IHashProvider;
+
   constructor(
-    @inject('UsersRepository')
-    private usersRepository: IUsersRepository,
+    @inject('usersRepository')
+    usersRepository: IUsersRepository,
 
     @inject('HashProvider')
-    private hashProvider: IHashProvider,
-  ) {}
+    hashProvider: IHashProvider,
+  ) {
+    this.usersRepository = usersRepository;
+    this.hashProvider = hashProvider;
+  }
 
   public async execute({ name, email, password }: IRequest): Promise<User> {
     const checkUserExists = await this.usersRepository.findByEmail(email);

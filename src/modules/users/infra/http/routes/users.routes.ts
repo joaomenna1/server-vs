@@ -1,17 +1,17 @@
 import { Router } from 'express';
-import multer from 'multer';
+// import multer from 'multer';
 import { celebrate, Segments, Joi } from 'celebrate';
 
-import uploadConfig from '@config/upload';
-import ensureAuthenticate from '@modules/users/infra/http/middleware/ensureAthenticante';
+// import uploadConfig from '@config/upload';
+// import ensureAuthenticate from '@modules/users/infra/http/middleware/ensureAthenticante';
 
 import UsersController from '../controllers/UsersController';
-import UserAvatarController from '../controllers/UserAvatarController';
+// import UserAvatarController from '../controllers/UserAvatarController';
 
 const userRouters = Router();
-const upload = multer(uploadConfig);
+// const upload = multer(uploadConfig);
 const usersController = new UsersController();
-const userAvatarController = new UserAvatarController();
+// const userAvatarController = new UserAvatarController();
 
 userRouters.post(
   '/',
@@ -22,15 +22,15 @@ userRouters.post(
       password: Joi.string().min(6).required(),
     },
   }),
-  usersController.create
+  usersController.create,
 );
 
-userRouters.patch(
+/* userRouters.patch(
   '/avatar',
   ensureAuthenticate,
   upload.single('avatar'),
-  userAvatarController.update
-);
+  userAvatarController.update,
+); */
 
 export default userRouters;
 
